@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h1>Day to Day Info of <%= username %></h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/steps" method="POST">
+            <div class="form-group">
+              <label for="steps">Steps</label>
+              <input type="number" class="form-control" name="step">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="Calories">Calories</label>
+              <input type="number" class="form-control" name="calories">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-dark" name="user" value="<%= username %>">Submit</button>
+            <br>
+        </form>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+
+<%- include('partials/footer') %>

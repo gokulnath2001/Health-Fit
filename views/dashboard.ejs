@@ -1,0 +1,178 @@
+<%- include("partials/header"); -%>
+<script>
+    
+</script>
+<div class="jumbotron centered">
+    <div class="container">
+      <!-- <i class="fas fa-key fa-6x"></i> -->
+      
+      <h1 class="display-3">Hello <%= username %>  <img src="/images/fit.png" alt="" class="img1"></h1>
+      <p class="lead">Your Dashboard💥 </p>
+      
+      <hr>
+      <!-- <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
+      <a class="btn btn-dark btn-lg" href="/login" role="button">Login</a> -->
+  
+    </div>
+</div>
+<div class="container" >
+    <div class="row  gy-5" >
+        <div class="col-sm-3 b">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                  <img src="/images/weight.png" class="card-img-top" alt="HEY" >
+                  <h5 class="card-title">Weight</h5>
+                  <p class="card-text "><span id="weight"><%= founduser.weight %></span> Kgs</p>
+                </div>
+              </div>
+        </div>
+        
+        <div class="col-sm-3 b">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/height.png" class="card-img-top" >
+                  <h5 class="card-title">Height</h5>
+                  <p class="card-text "><span id="height"><%= founduser.height %> </span> Metres</p> 
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 b">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <img src="/images/growth.png" class="card-img-top" >
+                  <h5 class="card-title">Age</h5>
+                  <p class="card-text "><span id="age"><%= founduser.age %></span> Years</p>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-3 b">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/bmi.png" class="card-img-top" >
+                  <h5 class="card-title">BMI</h5>
+                  <p class=" bmival card-text"><%= founduser.bmi %></p>
+                  <h4 id="bmitype" class="card-text"></h4>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 b">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <img src="/images/gender-equality.png" class="card-img-top" >
+                  <h5 class="card-title">Gender</h5>
+                  <p class="card-text sex"><%= founduser.sex %></p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 b">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/calories-calculator.png" class="card-img-top" >
+                  <h5 class="card-title">Calories Consumed</h5>
+                  <p class="card-text"><%= founduser.calories %></p>
+                </div>
+              </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-3 b">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <img src="/images/climb.png" class="card-img-top" >
+                  <h5 class="card-title">Steps</h5>
+                  <p class="card-text"><%= founduser.steps %></p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 b">
+            <div class="card">
+                <div class="card-body">
+                    <img src="/images/runner.png" class="card-img-top" >
+                  <h5 class="card-title">Fitness Level</h5>
+                  <p class="card-text"><%= fit %></p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 b">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <img src="/images/calories.png" class="card-img-top" >
+                  <h5 class="card-title">Calories Burned</h5>
+                  <p class="card-text"><%=caloriesBurned%></p>
+                </div>
+              </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="row gx-10 gy-5">
+      <div class="col-sm-3 b">
+          <div class="card ">
+              <div class="card-body">
+                  <img src="/images/calories-req.png" class="card-img-top" >
+                <h5 class="card-title">BMR</h5>
+                <p class="card-text bmr"></p>
+                <p class="card-text ">Minimum Calorific requirement</p>
+              </div>
+            </div>
+      </div>
+      <div class="col-sm-3 b">
+          <div class="card text-white bg-secondary mb-3">
+              <div class="card-body">
+                  <img src="/images/metabolism.png" class="card-img-top" >
+                <h5 class="card-title">Ideal Calories requirement</h5>
+                <p class="card-text idealCal"></p>
+                <p class="card-text">Considering you engage in light exercise</p>
+                
+              </div>
+            </div>
+      </div>
+      <!-- <div class="col-sm-3 b">
+          <div class="card ">
+              <div class="card-body">
+                  <img src="/images/calories.png" class="card-img-top" >
+                <h5 class="card-title">Calories Burned</h5>
+                <p class="card-text"><%=caloriesBurned%></p>
+              </div>
+            </div>
+      </div> -->
+  </div>
+  <br><br>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-3 b">
+            <% var a= "/update/" + username; %>
+            <button class="btn btn-dark" onclick="document.location='<%= a%>'">UPDATE INFO</button>
+        </div>
+        <div class="col-sm-3 b">
+            <% var b= "/steps/" + username; %>
+            <button class="btn btn-dark" onclick="document.location='<%= b%>'">UPDATE DAY TO DAY INFO</button>
+        </div>
+        <div class="col-sm-3 ">
+          
+          <button class="btn btn-danger" onclick="document.location='/'" style="float: right">Log out</button>
+      </div>
+        
+    </div>
+    <br><hr><br>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-6 b">
+            <h3>For more further personalized training:</h3>
+            <button class="btn btn-dark" onclick="document.location='/webapp'">Contact Instructor</button> 
+        </div>
+    </div>
+    <br><br>
+</div>
+
+
+
+
+<%- include('partials/footer') %>

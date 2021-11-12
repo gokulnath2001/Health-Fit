@@ -1,0 +1,46 @@
+<%- include("partials/header"); -%>
+<div class="container ">
+    <br><br><br>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-3 ">
+            
+        </div>
+        <div class="col-sm-3 ">
+            <div class="card">
+                <div class="card-body">
+                    <i class="fas fa-exclamation-triangle fa-10x"></i><br>
+
+                  <h5 class="card-title">ERROR 500</h5>
+                  <p class="card-text">Under Construction</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-3 ">
+            
+        </div>
+    
+    </div>
+    <div class="row gx-10 gy-5">
+        <div class="col-sm-3 ">
+            <br>
+            <br>
+
+            <button onclick="goBack()" class="btn btn-dark">Return to Dashboard</button>
+        <script>
+            function goBack() {
+              window.history.back();
+            }
+        </script>
+        </div>
+        
+
+    </div>
+
+    
+</div>
+<br><br>
+<br>
+<br>
+
+<%- include('partials/footer') %>

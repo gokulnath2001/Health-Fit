@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h1>Personal Information of <%= username %></h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/update" method="POST">
+            <div class="form-group">
+              <label for="height">Height in mts</label>
+              <input type="number" class="form-control" name="height" step="0.01">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="weight">Weight in KGs</label>
+              <input type="number" class="form-control" name="weight" step="0.01">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" name="age">
+            </div><br>
+            <div class="form-group">
+              <label for="sex">Sex</label><br>
+              <input type="radio" id="html" name="sex" value="Male">
+              <label for="html">Male</label>
+              <input type="radio" id="css" name="sex" value="Female">
+              <label for="css">Female</label><br>
+          </div><br>
+            <button type="submit" class="btn btn-dark" name="user" value="<%= username %>">Submit</button>
+            <br>
+        </form>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>
+
+<%- include('partials/footer') %>
