@@ -77,8 +77,9 @@ app.get("/login",function(req,res){
     res.render("login",{count:count});
 });
 
-app.get("/webapp", function(req, res){
-    res.render("webapp");
+app.get("/webapp/:user", function(req, res){
+    const username = req.params.user;
+    res.render("webapp",{username: username});
 });
 
 app.get("/aboutus", function(req,res){
@@ -225,7 +226,8 @@ app.post("/update",function(req,res){
         height: req.body.height, 
         weight: req.body.weight,
         age: req.body.age,
-        sex: req.body.sex
+        sex: req.body.sex,
+        bmi: (req.body.weight)/(req.body.height * req.body.height)
     },function(err,docs){
         if(err){
             console.log(err);

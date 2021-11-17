@@ -1,46 +1,38 @@
 <%- include("partials/header"); -%>
-<div class="container ">
-    <br><br><br>
-    <div class="row gx-10 gy-5">
-        <div class="col-sm-3 ">
-            
-        </div>
-        <div class="col-sm-3 ">
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-exclamation-triangle fa-10x"></i><br>
-
-                  <h5 class="card-title">ERROR 500</h5>
-                  <p class="card-text">Under Construction</p>
-                  
-                </div>
-              </div>
-        </div>
-        <div class="col-sm-3 ">
-            
-        </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<div>
+    <br>
+    <h3 class="card-title">Personal trainer🏋️‍♂️</h3>
+    <hr>
+    <p class="card-text">We offer personalised solutions for all your needs</p><span id="username-input"><%= username%></span>
+    <p class="card-text">Click on the options below to talk to our experts</p>
+    <button class="btn-dark btn" onclick="sendUsername()">Send Username</button>
+    <button class="btn-dark btn" onclick="startCall()">Start Call</button>
     
-    </div>
-    <div class="row gx-10 gy-5">
-        <div class="col-sm-3 ">
-            <br>
-            <br>
-
-            <button onclick="goBack()" class="btn btn-dark">Return to Dashboard</button>
-        <script>
-            function goBack() {
-              window.history.back();
-            }
-        </script>
-        </div>
-        
-
-    </div>
-
-    
+    <script>
+        function goBack() {
+            window.history.back();
+       }
+    </script>
 </div>
-<br><br>
-<br>
-<br>
+<div id="video-call-div">
+    <video muted id="local-video" autoplay></video>
+    <video id="remote-video" autoplay></video>
+    <div class="call-action-div">
+        <button onclick="muteVideo()" class="btn btn-light">Mute Video</button>
+        <button onclick="muteAudio()" class="btn btn-light">Mute Audio</button>
+        <button onclick="callexit()" class="btn btn-light">Exit</button>
+    </div>
+</div>
+<br><br> <br> <br> <br> <br>  <br> <br> <br> <br> <br>               
+<button onclick="goBack()" class="btn btn-dark">Return to Dashboard</button> 
+<br> <br>
+</div>
 
-<%- include('partials/footer') %>
+  <script src="/css/script.js"></script>
+  <script src="/css/sender.js"></script>
+</body>
+</html>
+<!-- <%- include('partials/footer') %> -->
+
+

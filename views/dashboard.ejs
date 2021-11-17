@@ -166,7 +166,8 @@
     <div class="row gx-10 gy-5">
         <div class="col-sm-6 b">
             <h3>For more further personalized training:</h3>
-            <button class="btn btn-dark" onclick="document.location='/webapp'">Contact Instructor</button> 
+            <% var c = "/webapp/" + username; %>
+            <button class="btn btn-dark" onclick="document.location= '<%= c%>'">Contact Instructor</button> 
         </div>
     </div>
     <br><br>
