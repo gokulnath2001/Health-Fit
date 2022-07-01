@@ -11,13 +11,36 @@
           <!-- Makes POST request to /login route -->
           <form action="/steps" method="POST">
             <div class="form-group">
-              <label for="steps">Steps</label>
+              <label for="steps">Minutes walked</label>
               <input type="number" class="form-control" name="step">
             </div>
             <br>
             <div class="form-group">
-              <label for="Calories">Calories</label>
-              <input type="number" class="form-control" name="calories">
+              
+              <label for="Breakfast">Breakfast</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="Breakfast">
+                <option value="rice">Rice</option>
+                <option value="roti">Roti</option>
+                <option value="idli">Idli</option>
+              </select>
+            </div>
+            <div class="form-group">
+             
+              <label for="Lunch">Lucnh</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="Lunch">
+                <option value="rice">Rice</option>
+                <option value="roti">Roti</option>
+                <option value="idli">Idli</option>
+              </select>
+            </div>
+            <div class="form-group">
+              
+              <label for="Dinner">Dinner</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="Dinner">
+                <option value="rice">Rice</option>
+                <option value="roti">Roti</option>
+                <option value="idli">Idli</option>
+              </select>
             </div>
             <br>
             <button type="submit" class="btn btn-dark" name="user" value="<%= username %>">Submit</button>

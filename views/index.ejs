@@ -1,0 +1,25 @@
+<%- include("partials/header"); -%>
+<script>
+    function goBack() {
+        window.history.back();
+   }
+</script>
+    <div class="container-fluid">
+        <div class="row h-100 w-100">
+            <div class="col-12 col-sm-6 d-flex justify-content-center">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video class="embed-responsive-item" muted></video>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 d-flex justify-content-center">
+                <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
+                </div>
+            </div>
+        </div>
+        <button onclick="goBack()" class="btn btn-danger" >End Call</button>
+    </div>
+    <script src="/css/main.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/css/bundle.js"></script>
+    
+    <%- include('partials/footer') %>

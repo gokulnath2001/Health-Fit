@@ -6,8 +6,8 @@
     <hr>
     <p class="card-text">We offer personalised solutions for all your needs</p><span id="username-input"><%= username%></span>
     <p class="card-text">Click on the options below to talk to our experts</p>
-    <button class="btn-dark btn" onclick="sendUsername()">Send Username</button>
-    <button class="btn-dark btn" onclick="startCall()">Start Call</button>
+    <!-- <button class="btn-dark btn" onclick="sendUsername()">Send Username</button> -->
+    <button class="btn-dark btn"  onclick="document.location= '/client'">Start Call</button>
     
     <script>
         function goBack() {
@@ -15,7 +15,9 @@
        }
     </script>
 </div>
-<div id="video-call-div">
+<!-- <div id="video-call-div">
+    
+    
     <video muted id="local-video" autoplay></video>
     <video id="remote-video" autoplay></video>
     <div class="call-action-div">
@@ -23,7 +25,7 @@
         <button onclick="muteAudio()" class="btn btn-light">Mute Audio</button>
         <button onclick="callexit()" class="btn btn-light">Exit</button>
     </div>
-</div>
+</div> -->
 <br><br> <br> <br> <br> <br>  <br> <br> <br> <br> <br>               
 <button onclick="goBack()" class="btn btn-dark">Return to Dashboard</button> 
 <br> <br>
@@ -31,8 +33,10 @@
 
   <script src="/css/script.js"></script>
   <script src="/css/sender.js"></script>
-</body>
-</html>
+  <script src="/css/main.js"></script>
+  <script src="/css/bundle.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
 <!-- <%- include('partials/footer') %> -->
 
 

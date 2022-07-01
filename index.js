@@ -8,6 +8,10 @@ const { truncate } = require("lodash");
 
 const app = express();
 
+const http = require('http').Server(app)
+const io = require('socket.io')(http)
+
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -30,6 +34,20 @@ const userSchema = {
     },
   };
 const User = mongoose.model("User", userSchema);
+
+const adminSchema = {
+    username: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        
+    },
+  };
+const Admin = mongoose.model("Admin", adminSchema);
+
+
 
 const metricSchema = {
     username: {
@@ -77,6 +95,10 @@ app.get("/login",function(req,res){
     res.render("login",{count:count});
 });
 
+app.get("/adminlogin",function(req,res){
+    res.render("admin-login",{count:count});
+});
+
 app.get("/webapp/:user", function(req, res){
     const username = req.params.user;
     res.render("webapp",{username: username});
@@ -116,6 +138,14 @@ app.get("/dashboard/:user",function(req,res){
         }
     });
     
+});
+
+app.get("/client", function(req,res){
+    res.render("index");
+});
+
+app.get("/admin/vid", function(req,res){
+    res.render("index");
 });
 
 app.get("/upload/:user",function(req,res){
@@ -190,6 +220,37 @@ app.post("/login",function(req,res){
     });
 });
 
+app.post("/adminlogin",function(req,res){
+    var count =0;
+    const username = req.body.username;
+    const password = req.body.password;
+    // const userItem = new Admin({
+    //     username: "Sachin",
+    //     password: "123"
+    // });
+    // userItem.save();
+    Admin.findOne({username: username}, function(err, founduser){
+        if(err){
+            res.render("login");
+        }
+        else{
+            if(founduser){
+                if(founduser.password === password ){
+                    res.render("webappadmin");
+                }
+                else{
+                    count =1;
+                    res.render("login",{count:count});
+                }
+            }
+            else{
+                count =1;
+                res.render("login",{count:count});
+            }
+        }
+    });
+});
+
 app.post("/upload",function(req,res){
     const username = req.body.user;
     var bmiItem= (req.body.weight)/(req.body.height * req.body.height);
@@ -210,7 +271,10 @@ app.post("/upload",function(req,res){
 
 app.post("/steps",function(req,res){
     const username = req.body.user;
-    Metric.findOneAndUpdate({ username:username}, {steps: req.body.step, calories: req.body.calories},function(err,docs){
+    const steps = req.body.step*90;
+    const calories = Number(calcalc(req.body.Breakfast) + calcalc(req.body.Lunch) + calcalc(req.body.Dinner));
+    
+    Metric.findOneAndUpdate({ username:username}, {steps: steps, calories: calories},function(err,docs){
         if(err){
             console.log(err);
         }
@@ -237,7 +301,51 @@ app.post("/update",function(req,res){
         }
     });
 });
+let clients = 0
+io.on('connection', function (socket) {
+    socket.on("NewClient", function () {
+        if (clients < 2) {
+            if (clients == 1) {
+                this.emit('CreatePeer')
+            }
+        }
+        else
+            this.emit('SessionActive')
+        clients++;
+    })
+    socket.on('Offer', SendOffer)
+    socket.on('Answer', SendAnswer)
+    socket.on('disconnect', Disconnect)
+})
 
-app.listen(3000, function() {
+function Disconnect() {
+    if (clients > 0)
+        clients--
+}
+
+function SendOffer(offer) {
+    this.broadcast.emit("BackOffer", offer)
+}
+
+function SendAnswer(data) {
+    this.broadcast.emit("BackAnswer", data)
+}
+
+function calcalc(data){
+    var cal = 0;
+    if(data==='rice'){
+        cal = 600;
+    }
+    if(data==='roti'){
+        cal = 550;
+    }
+    if(data==='idli'){
+        cal = 450;
+    }
+    return cal;
+}
+
+http.listen(3000, function() {
     console.log("Server started on port 3000.");
   });
+
